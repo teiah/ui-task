@@ -20,9 +20,7 @@ export class InputFilterMenuComponent extends FilterMenuComponent {
   }
 
   async filterColumnByValue(value: string): Promise<void> {
-    if (!await this.input.element.isVisible()) {
-      await this.open();
-    }
+    await this.open();
     await this.fill(value);
     await this.apply();
     await this.assertClosed();

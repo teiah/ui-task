@@ -30,8 +30,9 @@ export abstract class FilterMenuComponent extends BaseComponent {
   }
 
   async open(): Promise<void> {
-    await this.assertClosed();
-    await this.getColumnMenuLink().click();
+    if (!await this.isOpenLocator().isVisible()) {
+      await this.getColumnMenuLink().click();
+    }
     await this.assertOpen();
   }
 
