@@ -3,7 +3,7 @@ import { BaseComponent } from './BaseComponent';
 import { Button } from '../controls';
 import { BUTTON, LINK, CLEAR, FILTER } from '../constants';
 
-export const COLUMN_MENU_ROLE = 'Column menu';
+const COLUMN_MENU_ROLE = 'Column menu';
 
 export abstract class FilterMenuComponent extends BaseComponent {
   readonly clearButton: Button;

@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 import { MembersPage } from '../pages';
 import { NAME_COLUMN } from '../components';
 import { CLEAR, FILTER, SEARCH_FOR, SOLID_BG, SOLID_TEXT, OUTLINE_BG, OUTLINE_TEXT } from '../constants';
-import { assertCount, assertText, assertPlaceholder, assertButtonText, assertButtonStyle } from './helpers';
+import { assertCount, assertText, assertPlaceholder, assertButtonText, assertButtonStyle, assertHidden } from './helpers';
 
 test.describe('Members page', () => {
   test('TC-UI-01 - Filter members by name and verify result count', async ({ page }) => {
@@ -17,6 +17,10 @@ test.describe('Members page', () => {
 
     await test.step(`Verify ${UNFILTERED_ROW_COUNT} members are displayed before filtering`, async () => {
       await assertCount(membersPage.grid.rows, UNFILTERED_ROW_COUNT);
+    });
+
+    await test.step('Verify no status filters are selected', async () => {
+      await assertHidden(membersPage.grid.activeFiltersText);
     });
 
     await test.step('Open Name filter menu and verify elements', async () => {

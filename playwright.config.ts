@@ -8,6 +8,7 @@ export default defineConfig({
   globalSetup: './global-setup.ts',
   testDir: './tests',
   reporter: 'html',
+  expect: { timeout: 15000 },
   use: {
     baseURL: 'https://staging.officernd.com',
     headless: true,

@@ -21,3 +21,7 @@ export async function assertButtonStyle(locator: Locator, bgColor: string, textC
   await expect(locator).toHaveCSS(BACKGROUND_COLOR, bgColor);
   await expect(locator).toHaveCSS(COLOR, textColor);
 }
+
+export async function assertHidden(locator: Locator): Promise<void> {
+  await expect(locator).toBeHidden();
+}
