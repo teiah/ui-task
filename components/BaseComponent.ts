@@ -8,6 +8,6 @@ export abstract class BaseComponent {
   }
 
   async assertVisible(): Promise<void> {
-    expect(await this.getLocator().isVisible()).toBe(true);
+    await expect(this.getLocator()).toBeVisible();
   }
 }

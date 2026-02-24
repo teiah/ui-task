@@ -1,2 +1,2 @@
 export { BaseGridComponent } from './BaseGridComponent';
-export { MembersGridComponent, NAME } from './MembersGridComponent';
+export { MembersGridComponent, NAME_COLUMN } from './MembersGridComponent';

@@ -1,7 +1,7 @@
 import { Locator } from '@playwright/test';
 import { BaseGridComponent } from './BaseGridComponent';
 
-export const NAME = 'Name' as const;
+export const NAME_COLUMN = 'Name' as const;
 
 export class MembersGridComponent extends BaseGridComponent {
   private static readonly SELECTORS = {
