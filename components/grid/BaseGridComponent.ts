@@ -11,8 +11,12 @@ export abstract class BaseGridComponent extends BaseComponent {
     super(root);
   }
 
+  filter(columnName: string): InputFilterMenuComponent {
+    return new InputFilterMenuComponent(this.root, columnName);
+  }
+
   async filterColumnByInputValue(columnName: string, value: string): Promise<void> {
-    await new InputFilterMenuComponent(this.root, columnName).filterColumnByValue(value);
+    await this.filter(columnName).filterColumnByValue(value);
   }
 
   async waitForReady(): Promise<void> {
