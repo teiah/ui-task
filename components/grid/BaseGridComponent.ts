@@ -1,8 +1,8 @@
 import { Locator, expect } from '@playwright/test';
-import { BaseComponent } from './BaseComponent';
-import { InputFilterMenuComponent } from './InputFilterMenuComponent';
-import { COLUMN_MENU_ROLE } from './FilterMenuComponent';
-import { LINK } from '../controls';
+import { BaseComponent } from '../BaseComponent';
+import { InputFilterMenuComponent } from '../InputFilterMenuComponent';
+import { COLUMN_MENU_ROLE } from '../FilterMenuComponent';
+import { LINK } from '../../constants';
 
 export abstract class BaseGridComponent extends BaseComponent {
   abstract readonly rows: Locator;

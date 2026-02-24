@@ -1,6 +1,6 @@
 import { Locator, expect } from '@playwright/test';
 import { FormControl } from './FormControl';
-import { BACKGROUND_COLOR, COLOR } from './CSSProperty';
+import { BACKGROUND_COLOR, COLOR } from '../constants';
 
 export class Button extends FormControl {
   constructor(locator: Locator) {

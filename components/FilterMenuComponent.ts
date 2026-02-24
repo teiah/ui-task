@@ -1,6 +1,7 @@
 import { Locator } from '@playwright/test';
 import { BaseComponent } from './BaseComponent';
-import { Button, BUTTON, LINK, CLEAR, FILTER } from '../controls';
+import { Button } from '../controls';
+import { BUTTON, LINK, CLEAR, FILTER } from '../constants';
 
 export const COLUMN_MENU_ROLE = 'Column menu';
 

@@ -1,7 +1,4 @@
 export { BaseComponent } from './BaseComponent';
-export { BaseGridComponent } from './BaseGridComponent';
-export { FilterMenuComponent } from './FilterMenuComponent';
+export { FilterMenuComponent, COLUMN_MENU_ROLE } from './FilterMenuComponent';
 export { InputFilterMenuComponent } from './InputFilterMenuComponent';
-export { MembersGridComponent, NAME } from './MembersGridComponent';
-export { PrimaryNav } from './PrimaryNav';
-export { SecondaryNav } from './SecondaryNav';
+export { BaseGridComponent, MembersGridComponent, NAME } from './grid';

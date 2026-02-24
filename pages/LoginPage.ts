@@ -1,5 +1,6 @@
 import { BasePage } from './BasePage';
-import { Button, Input, BUTTON, CONTINUE, SIGN_IN } from '../controls';
+import { Button, Input } from '../controls';
+import { BUTTON, CONTINUE, SIGN_IN } from '../constants';
 
 const SIGN_IN_TIMEOUT = 15_000;
 const ADMIN_TIMEOUT = 20_000;
