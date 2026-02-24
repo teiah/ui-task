@@ -12,11 +12,7 @@ const PENDING_FILTER = 'Pending';
 const MEMBER_PORTAL_FILTER = 'Member Portal';
 
 export class MembersGridComponent extends BaseGridComponent {
-  static readonly ROOT_SELECTOR = '[data-test="members-data-grid-container"]';
-
-  private static readonly SELECTORS = {
-    rows: '.k-table-row.k-master-row',
-  };
+  static readonly MEMBERS_GRID_TEST_ID = 'members-data-grid-container';
 
   readonly rows: Locator;
   readonly activeFilter: Button;
@@ -26,7 +22,7 @@ export class MembersGridComponent extends BaseGridComponent {
 
   constructor(private readonly page: Page, root: Locator) {
     super(root);
-    this.rows = this.root.locator(MembersGridComponent.SELECTORS.rows);
+    this.rows = this.root.getByRole('rowgroup').nth(1).getByRole('row');
     this.activeFilter = new Button(this.compositeFilter(ACTIVE_FILTER));
     this.dropInFilter = new Button(this.compositeFilter(DROP_IN_FILTER));
     this.pendingFilter = new Button(this.compositeFilter(PENDING_FILTER));
@@ -38,6 +34,6 @@ export class MembersGridComponent extends BaseGridComponent {
   }
 
   private compositeFilter(label: string): Locator {
-    return this.root.locator(`[data-test="${COMPOSITE_FILTER_TEST_ID}"]`).filter({ hasText: new RegExp(`^${label}`) });
+    return this.root.getByTestId(COMPOSITE_FILTER_TEST_ID).filter({ hasText: new RegExp(`^${label}`) });
   }
 }

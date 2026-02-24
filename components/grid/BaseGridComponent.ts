@@ -8,8 +8,8 @@ export abstract class BaseGridComponent extends BaseComponent {
 
   constructor(root: Locator) {
     super(root);
-    this.pagerInfo = this.root.locator('[data-test="pager-info"]');
-    this.activeFiltersText = this.root.locator('[data-test="active-filters-text"]');
+    this.pagerInfo = this.root.getByTestId('pager-info');
+    this.activeFiltersText = this.root.getByTestId('active-filters-text');
   }
 
   async waitForReady(): Promise<void> {
