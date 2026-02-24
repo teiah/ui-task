@@ -33,6 +33,12 @@ export abstract class FilterMenuComponent extends BaseComponent {
   abstract assertOpen(): Promise<void>;
   abstract assertClosed(): Promise<void>;
 
+  async assertButtons(): Promise<void> {
+    await this.open();
+    await this.assertClearButton();
+    await this.assertApplyButton();
+  }
+
   async assertClearButton(): Promise<void> {
     await this.clearButton.assertText(CLEAR);
     await this.clearButton.assertBackgroundColor(CLEAR_BUTTON_BG_COLOR);
