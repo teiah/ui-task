@@ -11,6 +11,10 @@ export class InputFilterMenuComponent extends FilterMenuComponent {
     this.input = new Input(grid.getByPlaceholder(`${SEARCH_FOR}${column}`));
   }
 
+  protected isOpenLocator(): Locator {
+    return this.input.element;
+  }
+
   async fill(value: string): Promise<void> {
     await this.input.fill(value);
   }

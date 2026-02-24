@@ -1,4 +1,4 @@
-import { Locator } from '@playwright/test';
+import { Locator, expect } from '@playwright/test';
 import { BaseComponent } from './BaseComponent';
 import { Button } from '../controls';
 import { BUTTON, LINK, CLEAR, FILTER } from '../constants';
@@ -19,8 +19,12 @@ export abstract class FilterMenuComponent extends BaseComponent {
     return new Button(this.root.getByRole(LINK, { name: `${this.column} ${COLUMN_MENU_ROLE}` }));
   }
 
+  protected abstract isOpenLocator(): Locator;
+
   async open(): Promise<void> {
+    await expect(this.isOpenLocator()).toBeHidden();
     await this.columnMenuButton().click();
+    await expect(this.isOpenLocator()).toBeVisible();
   }
 
   async apply(): Promise<void> {
