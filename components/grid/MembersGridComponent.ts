@@ -1,7 +1,6 @@
-import { Locator, Page } from '@playwright/test';
+import { Locator } from '@playwright/test';
 import { BaseGridComponent } from './BaseGridComponent';
 import { Button } from '../../controls';
-import { InputFilterMenuComponent } from '../InputFilterMenuComponent';
 
 export const NAME_COLUMN = 'Name' as const;
 
@@ -20,17 +19,13 @@ export class MembersGridComponent extends BaseGridComponent {
   readonly pendingFilter: Button;
   readonly memberPortalFilter: Button;
 
-  constructor(private readonly page: Page, root: Locator) {
+  constructor(root: Locator) {
     super(root);
     this.rows = this.root.getByRole('rowgroup').nth(1).getByRole('row');
     this.activeFilter = new Button(this.compositeFilter(ACTIVE_FILTER));
     this.dropInFilter = new Button(this.compositeFilter(DROP_IN_FILTER));
     this.pendingFilter = new Button(this.compositeFilter(PENDING_FILTER));
     this.memberPortalFilter = new Button(this.compositeFilter(MEMBER_PORTAL_FILTER));
-  }
-
-  filter(columnName: string): InputFilterMenuComponent {
-    return new InputFilterMenuComponent(this.root, this.page, columnName);
   }
 
   private compositeFilter(label: string): Locator {

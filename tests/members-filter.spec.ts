@@ -23,18 +23,26 @@ test.describe('Members page', () => {
       await assertHidden(membersPage.grid.activeFiltersText);
     });
 
+    const nameFilter = membersPage.filter(NAME_COLUMN);
+
     await test.step('Open Name filter menu and verify elements', async () => {
-      const nameFilter = membersPage.grid.filter(NAME_COLUMN);
       await nameFilter.open();
       await assertPlaceholder(nameFilter.input.element, `${SEARCH_FOR}${NAME_COLUMN}`);
       await assertButtonText(nameFilter.clearButton.element, CLEAR);
       await assertButtonStyle(nameFilter.clearButton.element, OUTLINE_BG, OUTLINE_TEXT);
       await assertButtonText(nameFilter.applyButton.element, FILTER);
       await assertButtonStyle(nameFilter.applyButton.element, PRIMARY_BLUE, SOLID_TEXT);
+      await nameFilter.applyButton.assertDisabled();
     });
 
-    await test.step(`Filter members by Name "${FILTER_VALUE}"`, async () => {
-      await membersPage.grid.filter(NAME_COLUMN).filterColumnByValue(FILTER_VALUE);
+    await test.step(`Enter "${FILTER_VALUE}" in Name filter and verify Filter button is enabled`, async () => {
+      await nameFilter.fill(FILTER_VALUE);
+      await nameFilter.applyButton.assertEnabled();
+    });
+
+    await test.step('Apply Name filter', async () => {
+      await nameFilter.apply();
+      await nameFilter.assertClosed();
     });
 
     await test.step(`Verify ${EXPECTED_RESULT_COUNT} results are displayed`, async () => {

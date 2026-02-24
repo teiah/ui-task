@@ -1,4 +1,4 @@
-import { Locator } from '@playwright/test';
+import { Locator, expect } from '@playwright/test';
 
 export abstract class FormControl {
   constructor(protected readonly locator: Locator) {}
@@ -9,5 +9,13 @@ export abstract class FormControl {
 
   async waitForVisible(): Promise<void> {
     await this.locator.waitFor({ state: 'visible' });
+  }
+
+  async assertEnabled(): Promise<void> {
+    await expect(this.locator).toBeEnabled();
+  }
+
+  async assertDisabled(): Promise<void> {
+    await expect(this.locator).toBeDisabled();
   }
 }

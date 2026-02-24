@@ -25,7 +25,7 @@ export abstract class FilterMenuComponent extends BaseComponent {
     await expect(this.isOpenLocator()).toBeVisible();
   }
 
-  protected async assertClosed(): Promise<void> {
+  async assertClosed(): Promise<void> {
     await expect(this.isOpenLocator()).toBeHidden();
   }
 
