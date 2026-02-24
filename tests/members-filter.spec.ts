@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { MembersPage } from '../pages';
 import { NAME_COLUMN } from '../components';
-import { CLEAR, FILTER, SEARCH_FOR, PRIMARY_BLUE, SOLID_TEXT, OUTLINE_BG, OUTLINE_TEXT } from '../constants';
+import { CLEAR, FILTER, SEARCH_FOR, K_BUTTON_SOLID_PRIMARY, K_BUTTON_SOLID_BASE } from '../constants';
 import { assertCount, assertText, assertPlaceholder, assertButtonStyle, assertHidden } from './helpers';
 
 test.describe('Members page', () => {
@@ -20,7 +20,7 @@ test.describe('Members page', () => {
     });
 
     await test.step('Verify no status filters are selected', async () => {
-      await assertHidden(membersPage.grid.activeFiltersText);
+      await assertHidden(membersPage.grid.activeFiltersText.element);
     });
 
     const nameFilter = membersPage.filter(NAME_COLUMN);
@@ -29,9 +29,9 @@ test.describe('Members page', () => {
       await nameFilter.open();
       await assertPlaceholder(nameFilter.input.element, `${SEARCH_FOR}${NAME_COLUMN}`);
       await assertText(nameFilter.clearButton.element, CLEAR);
-      await assertButtonStyle(nameFilter.clearButton.element, OUTLINE_BG, OUTLINE_TEXT);
+      await assertButtonStyle(nameFilter.clearButton.element, K_BUTTON_SOLID_BASE);
       await assertText(nameFilter.applyButton.element, FILTER);
-      await assertButtonStyle(nameFilter.applyButton.element, PRIMARY_BLUE, SOLID_TEXT);
+      await assertButtonStyle(nameFilter.applyButton.element, K_BUTTON_SOLID_PRIMARY);
       await nameFilter.applyButton.assertDisabled();
     });
 
@@ -47,7 +47,7 @@ test.describe('Members page', () => {
 
     await test.step(`Verify ${EXPECTED_RESULT_COUNT} results are displayed`, async () => {
       await assertCount(membersPage.grid.rows, EXPECTED_RESULT_COUNT);
-      await assertText(membersPage.grid.pagerInfo, EXPECTED_PAGER_TEXT);
+      await assertText(membersPage.grid.pagerInfo.element, EXPECTED_PAGER_TEXT);
     });
   });
 });

@@ -1,6 +1,6 @@
 import { Locator } from '@playwright/test';
 import { BaseGridComponent } from './BaseGridComponent';
-import { ROW, ROW_GROUP } from '../../constants';
+import { ROW, TBODY } from '../../constants';
 
 export const NAME_COLUMN = 'Name' as const;
 
@@ -11,6 +11,6 @@ export class MembersGridComponent extends BaseGridComponent {
 
   constructor(root: Locator) {
     super(root);
-    this.rows = this.root.getByRole(ROW_GROUP).nth(1).getByRole(ROW);
+    this.rows = this.root.locator(TBODY).getByRole(ROW);
   }
 }
