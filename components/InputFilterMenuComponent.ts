@@ -1,4 +1,4 @@
-import { Locator, expect } from '@playwright/test';
+import { Locator } from '@playwright/test';
 import { Input } from '../controls';
 import { FilterMenuComponent } from './FilterMenuComponent';
 import { SEARCH_FOR } from '../constants';
@@ -25,6 +25,6 @@ export class InputFilterMenuComponent extends FilterMenuComponent {
     }
     await this.fill(value);
     await this.apply();
-    await expect(this.isOpenLocator()).toBeHidden();
+    await this.assertClosed();
   }
 }
