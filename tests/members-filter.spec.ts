@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { MembersPage } from '../pages';
 import { NAME_COLUMN } from '../components';
-import { CLEAR, FILTER, SEARCH_FOR, SOLID_BG, SOLID_TEXT, OUTLINE_BG, OUTLINE_TEXT } from '../constants';
+import { CLEAR, FILTER, SEARCH_FOR, PRIMARY_BLUE, SOLID_TEXT, OUTLINE_BG, OUTLINE_TEXT } from '../constants';
 import { assertCount, assertText, assertPlaceholder, assertButtonText, assertButtonStyle, assertHidden } from './helpers';
 
 test.describe('Members page', () => {
@@ -30,7 +30,7 @@ test.describe('Members page', () => {
       await assertButtonText(nameFilter.clearButton.element, CLEAR);
       await assertButtonStyle(nameFilter.clearButton.element, OUTLINE_BG, OUTLINE_TEXT);
       await assertButtonText(nameFilter.applyButton.element, FILTER);
-      await assertButtonStyle(nameFilter.applyButton.element, SOLID_BG, SOLID_TEXT);
+      await assertButtonStyle(nameFilter.applyButton.element, PRIMARY_BLUE, SOLID_TEXT);
     });
 
     await test.step(`Filter members by Name "${FILTER_VALUE}"`, async () => {
