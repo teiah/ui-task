@@ -6,12 +6,7 @@ export class Input extends FormControl {
     super(locator);
   }
 
-  async getValue(): Promise<string> {
-    return await this.locator.inputValue();
-  }
-
   async fill(value: string): Promise<void> {
     await this.locator.fill(value);
   }
-
 }

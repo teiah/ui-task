@@ -15,10 +15,6 @@ export abstract class BaseGridComponent extends BaseComponent {
     await new InputFilterMenuComponent(this.root, columnName).filterColumnByValue(value);
   }
 
-  async assertRowCount(expected: number): Promise<void> {
-    await expect(this.rows).toHaveCount(expected);
-  }
-
   async waitForReady(): Promise<void> {
     await this.root.waitFor({ state: 'visible' });
     await expect(this.root.getByRole(LINK, { name: new RegExp(COLUMN_MENU_ROLE) })).not.toHaveCount(0);

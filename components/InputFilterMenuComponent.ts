@@ -1,28 +1,15 @@
-import { Locator, expect } from '@playwright/test';
+import { Locator } from '@playwright/test';
 import { Input } from '../controls';
 import { FilterMenuComponent } from './FilterMenuComponent';
 
 const SEARCH_PLACEHOLDER_PREFIX = 'Search for ';
 
 export class InputFilterMenuComponent extends FilterMenuComponent {
-  private readonly input: Input;
+  readonly input: Input;
 
   constructor(grid: Locator, column: string) {
     super(grid, column);
     this.input = new Input(grid.getByPlaceholder(`${SEARCH_PLACEHOLDER_PREFIX}${column}`));
-  }
-
-  async assertOpen(): Promise<void> {
-    await expect(this.input.element, { message: `Expected "${this.column}" filter menu to be open` }).toBeVisible();
-  }
-
-  async assertClosed(): Promise<void> {
-    await expect(this.input.element, { message: `Expected "${this.column}" filter menu to be closed` }).toBeHidden();
-  }
-
-  async assertElements(): Promise<void> {
-    await this.assertButtons();
-    await expect(this.input.element).toHaveAttribute('placeholder', `${SEARCH_PLACEHOLDER_PREFIX}${this.column}`);
   }
 
   async fill(value: string): Promise<void> {

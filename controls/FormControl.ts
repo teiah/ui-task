@@ -7,8 +7,6 @@ export abstract class FormControl {
     return this.locator;
   }
 
-  abstract getValue(): Promise<string>;
-
   async waitForVisible(): Promise<void> {
     await this.locator.waitFor({ state: 'visible' });
   }
