@@ -40,7 +40,4 @@ export abstract class FilterMenuComponent extends BaseComponent {
     await this.applyButton.click();
   }
 
-  async clear(): Promise<void> {
-    await this.clearButton.click();
-  }
 }

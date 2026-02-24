@@ -13,10 +13,6 @@ export async function assertPlaceholder(locator: Locator, expected: string): Pro
   await expect(locator).toHaveAttribute('placeholder', expected);
 }
 
-export async function assertButtonText(locator: Locator, expected: string): Promise<void> {
-  await expect(locator).toHaveText(expected);
-}
-
 export async function assertButtonStyle(locator: Locator, bgColor: string, textColor: string): Promise<void> {
   await expect(locator).toHaveCSS(BACKGROUND_COLOR, bgColor);
   await expect(locator).toHaveCSS(COLOR, textColor);

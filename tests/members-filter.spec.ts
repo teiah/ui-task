@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 import { MembersPage } from '../pages';
 import { NAME_COLUMN } from '../components';
 import { CLEAR, FILTER, SEARCH_FOR, PRIMARY_BLUE, SOLID_TEXT, OUTLINE_BG, OUTLINE_TEXT } from '../constants';
-import { assertCount, assertText, assertPlaceholder, assertButtonText, assertButtonStyle, assertHidden } from './helpers';
+import { assertCount, assertText, assertPlaceholder, assertButtonStyle, assertHidden } from './helpers';
 
 test.describe('Members page', () => {
   test('TC-UI-01 - Filter members by name and verify result count', async ({ page }) => {
@@ -28,9 +28,9 @@ test.describe('Members page', () => {
     await test.step('Open Name filter menu and verify elements', async () => {
       await nameFilter.open();
       await assertPlaceholder(nameFilter.input.element, `${SEARCH_FOR}${NAME_COLUMN}`);
-      await assertButtonText(nameFilter.clearButton.element, CLEAR);
+      await assertText(nameFilter.clearButton.element, CLEAR);
       await assertButtonStyle(nameFilter.clearButton.element, OUTLINE_BG, OUTLINE_TEXT);
-      await assertButtonText(nameFilter.applyButton.element, FILTER);
+      await assertText(nameFilter.applyButton.element, FILTER);
       await assertButtonStyle(nameFilter.applyButton.element, PRIMARY_BLUE, SOLID_TEXT);
       await nameFilter.applyButton.assertDisabled();
     });
