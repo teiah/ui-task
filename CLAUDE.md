@@ -76,3 +76,22 @@ Use Playwright's built-in `expect` with auto-retry where possible (e.g. `toHaveC
 - Target browser: **Chromium** (default)
 - Run command: `npx playwright test`
 - Do not add linting, CI configuration, or reporting beyond Playwright's built-in HTML reporter unless explicitly requested
+
+---
+
+## Commit Message Format
+
+- all letters lowercase, except for names of framework files and classes (e.g. `BaseComponent.ts`, `LoginPage`)
+- start with a verb prefix followed by a colon: `add:`, `refactor:`, `fix:`, `delete:`
+- then list the subject of the change
+
+### Examples
+
+```
+add: BaseComponent.ts, getLocator() and assertVisible() methods
+refactor: MembersGridComponent to accept Locator instead of Page
+fix: LoginPage.isLoaded() replaced networkidle with element-level wait
+delete: Key.ts, Input.press()
+add: ButtonLabel.ts with Continue, SignIn, Clear, Filter constants
+refactor: FilterMenuComponent to extend BaseComponent
+```
