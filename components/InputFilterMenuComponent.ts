@@ -1,15 +1,14 @@
 import { Locator } from '@playwright/test';
 import { Input } from '../controls';
 import { FilterMenuComponent } from './FilterMenuComponent';
-
-const SEARCH_PLACEHOLDER_PREFIX = 'Search for ';
+import { SEARCH_FOR } from '../constants';
 
 export class InputFilterMenuComponent extends FilterMenuComponent {
   readonly input: Input;
 
   constructor(grid: Locator, column: string) {
     super(grid, column);
-    this.input = new Input(grid.getByPlaceholder(`${SEARCH_PLACEHOLDER_PREFIX}${column}`));
+    this.input = new Input(grid.getByPlaceholder(`${SEARCH_FOR}${column}`));
   }
 
   async fill(value: string): Promise<void> {
