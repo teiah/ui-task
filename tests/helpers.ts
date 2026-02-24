@@ -5,6 +5,10 @@ export async function assertCount(locator: Locator, expected: number): Promise<v
   await expect(locator).toHaveCount(expected);
 }
 
+export async function assertText(locator: Locator, expected: string): Promise<void> {
+  await expect(locator).toHaveText(expected);
+}
+
 export async function assertPlaceholder(locator: Locator, expected: string): Promise<void> {
   await expect(locator).toHaveAttribute('placeholder', expected);
 }
