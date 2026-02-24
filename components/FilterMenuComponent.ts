@@ -25,7 +25,9 @@ export abstract class FilterMenuComponent extends BaseComponent {
   }
 
   async open(): Promise<void> {
+    await this.assertClosed();
     await this.columnMenuButton().click();
+    await this.assertOpen();
   }
 
   abstract assertOpen(): Promise<void>;

@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 import { MembersPage } from '../pages';
-import { NAME_COLUMN } from '../components';
+import { InputFilterMenuComponent, NAME_COLUMN } from '../components';
 
 const TOTAL_ROW_COUNT = 10;
 const EXPECTED_RESULT_COUNT = 2;
@@ -13,8 +13,10 @@ test.describe('Members page', () => {
       await membersPage.grid.assertRowCount(TOTAL_ROW_COUNT);
     });
 
+    const nameFilter = new InputFilterMenuComponent(membersPage.grid.getLocator(), NAME_COLUMN);
+
     await test.step('Verify Name filter menu elements', async () => {
-      await membersPage.grid.assertInputFilterElements(NAME_COLUMN);
+      await nameFilter.assertElements();
     });
 
     await test.step('Filter members by Name "zara"', async () => {

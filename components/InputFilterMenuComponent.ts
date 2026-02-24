@@ -21,7 +21,7 @@ export class InputFilterMenuComponent extends FilterMenuComponent {
   }
 
   async assertElements(): Promise<void> {
-    await this.assertOpen();
+    await this.open();
     await expect(this.input.element).toHaveAttribute('placeholder', `${SEARCH_PLACEHOLDER_PREFIX}${this.column}`);
     await this.assertClearButton();
     await this.assertApplyButton();

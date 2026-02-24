@@ -11,12 +11,6 @@ export abstract class BaseGridComponent extends BaseComponent {
     super(root);
   }
 
-  async assertInputFilterElements(columnName: string): Promise<void> {
-    const filter = new InputFilterMenuComponent(this.root, columnName);
-    await filter.open();
-    await filter.assertElements();
-  }
-
   async filterColumnByInputValue(columnName: string, value: string): Promise<void> {
     await new InputFilterMenuComponent(this.root, columnName).filterColumnByValue(value);
   }
