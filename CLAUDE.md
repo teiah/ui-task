@@ -73,7 +73,7 @@ Use Playwright's built-in `expect` with auto-retry where possible (e.g. `toHaveC
 
 ## General Notes
 
-- Target browser: **Chromium** (default)
+- Target browsers: **Chrome, Firefox, Edge, Safari**
 - Run command: `npx playwright test`
 - Do not add linting, CI configuration, or reporting beyond Playwright's built-in HTML reporter unless explicitly requested
 
