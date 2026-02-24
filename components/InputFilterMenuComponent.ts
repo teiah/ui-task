@@ -1,4 +1,4 @@
-import { Locator } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 import { Input } from '../controls';
 import { FilterMenuComponent } from './FilterMenuComponent';
 import { SEARCH_FOR } from '../constants';
@@ -6,9 +6,9 @@ import { SEARCH_FOR } from '../constants';
 export class InputFilterMenuComponent extends FilterMenuComponent {
   readonly input: Input;
 
-  constructor(grid: Locator, column: string) {
-    super(grid, column);
-    this.input = new Input(grid.getByPlaceholder(`${SEARCH_FOR}${column}`));
+  constructor(grid: Locator, page: Page, column: string) {
+    super(grid, page, column);
+    this.input = new Input(page.getByPlaceholder(`${SEARCH_FOR}${column}`));
   }
 
   protected isOpenLocator(): Locator {

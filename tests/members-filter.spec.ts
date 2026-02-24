@@ -34,7 +34,7 @@ test.describe('Members page', () => {
     });
 
     await test.step(`Filter members by Name "${FILTER_VALUE}"`, async () => {
-      await membersPage.grid.filterColumnByInputValue(NAME_COLUMN, FILTER_VALUE);
+      await membersPage.grid.filter(NAME_COLUMN).filterColumnByValue(FILTER_VALUE);
     });
 
     await test.step(`Verify ${EXPECTED_RESULT_COUNT} results are displayed`, async () => {

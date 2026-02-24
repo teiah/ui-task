@@ -1,4 +1,4 @@
-import { Locator, expect } from '@playwright/test';
+import { Locator, Page, expect } from '@playwright/test';
 import { BaseComponent } from './BaseComponent';
 import { Button, Link } from '../controls';
 import { BUTTON, LINK, CLEAR, FILTER } from '../constants';
@@ -9,10 +9,10 @@ export abstract class FilterMenuComponent extends BaseComponent {
   readonly clearButton: Button;
   readonly applyButton: Button;
 
-  constructor(grid: Locator, protected readonly column: string) {
+  constructor(grid: Locator, protected readonly page: Page, protected readonly column: string) {
     super(grid);
-    this.clearButton = new Button(this.root.getByRole(BUTTON, { name: CLEAR }));
-    this.applyButton = new Button(this.root.getByRole(BUTTON, { name: FILTER }));
+    this.clearButton = new Button(page.getByRole(BUTTON, { name: CLEAR }));
+    this.applyButton = new Button(page.getByRole(BUTTON, { name: FILTER }));
   }
 
   getColumnMenuLink(): Link {
