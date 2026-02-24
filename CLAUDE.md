@@ -2,7 +2,7 @@
 
 ## Project Purpose
 
-Implement a minimal Playwright + TypeScript test framework that executes exactly one end-to-end test case against the OfficeRnD staging UI. Build only the components, classes, and methods required to run that test — nothing more.
+Implement a minimal Playwright + TypeScript test framework that executes exactly one UI test case against the OfficeRnD staging UI. Build only the components, classes, and methods required to run that test — nothing more.
 
 ---
 
