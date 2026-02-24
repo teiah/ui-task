@@ -6,6 +6,10 @@ export class Input extends FormControl {
     super(locator);
   }
 
+  async getPlaceholder(): Promise<string> {
+    return await this.locator.getAttribute('placeholder') ?? '';
+  }
+
   async fill(value: string): Promise<void> {
     await this.locator.fill(value);
   }
