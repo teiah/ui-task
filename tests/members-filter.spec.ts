@@ -2,7 +2,6 @@ import { test } from '@playwright/test';
 import { MembersPage } from '../pages';
 import { NAME_COLUMN } from '../components';
 import { CLEAR, FILTER, SEARCH_FOR, RESET_FILTERS, K_BUTTON_SOLID_PRIMARY, K_BUTTON_SOLID_BASE } from '../constants';
-import { assertCount } from './helpers';
 
 test.describe('Members page', () => {
   test('TC-UI-01 - Filter members by name and verify result count', async ({ page }) => {
@@ -20,7 +19,7 @@ test.describe('Members page', () => {
     const { nameFilter } = grid;
 
     await test.step(`Verify ${UNFILTERED_ROW_COUNT} members are displayed before filtering`, async () => {
-      await assertCount(grid.rows, UNFILTERED_ROW_COUNT);
+      await grid.assertRowCount(UNFILTERED_ROW_COUNT);
     });
 
     await test.step('Verify no status filters are selected', async () => {
@@ -49,7 +48,7 @@ test.describe('Members page', () => {
     });
 
     await test.step(`Verify ${EXPECTED_RESULT_COUNT} results are displayed`, async () => {
-      await assertCount(grid.rows, EXPECTED_RESULT_COUNT);
+      await grid.assertRowCount(EXPECTED_RESULT_COUNT);
       await grid.pagerInfo.assertText(EXPECTED_PAGER_TEXT);
       await grid.activeFiltersText.assertText(EXPECTED_ACTIVE_FILTERS_TEXT);
       await grid.resetFiltersButton.assertVisible();

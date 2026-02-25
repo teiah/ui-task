@@ -16,6 +16,10 @@ export abstract class BaseGridComponent extends BaseComponent {
     this.activeFiltersText = new Text(this.root.getByTestId(ACTIVE_FILTERS_TEXT_TEST_ID));
   }
 
+  async assertRowCount(expected: number): Promise<void> {
+    await expect(this.rows).toHaveCount(expected);
+  }
+
   async waitForReady(): Promise<void> {
     await expect(this.pagerInfo.element).toBeVisible();
   }
