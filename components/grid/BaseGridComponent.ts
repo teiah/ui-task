@@ -10,7 +10,7 @@ export abstract class BaseGridComponent extends BaseComponent {
   readonly pagerInfo: Text;
   readonly activeFiltersText: Text;
 
-  protected constructor(root: Locator) {
+  constructor(root: Locator) {
     super(root);
     this.pagerInfo = new Text(this.root.getByTestId(PAGER_INFO_TEST_ID));
     this.activeFiltersText = new Text(this.root.getByTestId(ACTIVE_FILTERS_TEXT_TEST_ID));

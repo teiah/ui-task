@@ -1,7 +1,8 @@
 import { Locator, Page } from '@playwright/test';
 import { BaseGridComponent } from './BaseGridComponent';
 import { InputFilterMenuComponent } from '../InputFilterMenuComponent';
-import { ROW, TBODY } from '../../constants';
+import { Button } from '../../controls';
+import { ROW, TBODY, BUTTON, RESET_FILTERS } from '../../constants';
 
 export const NAME_COLUMN = 'Name' as const;
 
@@ -10,10 +11,12 @@ export class MembersGridComponent extends BaseGridComponent {
 
   readonly rows: Locator;
   readonly nameFilter: InputFilterMenuComponent;
+  readonly resetFiltersButton: Button;
 
   constructor(root: Locator, page: Page) {
     super(root);
     this.rows = this.root.locator(TBODY).getByRole(ROW);
     this.nameFilter = new InputFilterMenuComponent(root, page, NAME_COLUMN);
+    this.resetFiltersButton = new Button(this.root.getByRole(BUTTON, { name: RESET_FILTERS }));
   }
 }

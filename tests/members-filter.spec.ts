@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { MembersPage } from '../pages';
 import { NAME_COLUMN } from '../components';
-import { CLEAR, FILTER, SEARCH_FOR, K_BUTTON_SOLID_PRIMARY, K_BUTTON_SOLID_BASE } from '../constants';
+import { CLEAR, FILTER, SEARCH_FOR, RESET_FILTERS, K_BUTTON_SOLID_PRIMARY, K_BUTTON_SOLID_BASE } from '../constants';
 import { assertCount } from './helpers';
 
 test.describe('Members page', () => {
@@ -10,6 +10,7 @@ test.describe('Members page', () => {
     const FILTER_VALUE = 'zara';
     const EXPECTED_RESULT_COUNT = 2;
     const EXPECTED_PAGER_TEXT = `1 - ${EXPECTED_RESULT_COUNT} out of ${EXPECTED_RESULT_COUNT}`;
+    const EXPECTED_ACTIVE_FILTERS_TEXT = `Active Filters: ${NAME_COLUMN} (${FILTER_VALUE})`;
 
     const membersPage = await test.step('Navigate to Members page', async () => {
       return MembersPage.open(page);
@@ -28,6 +29,7 @@ test.describe('Members page', () => {
 
     await test.step('Open Name filter menu and verify elements', async () => {
       await nameFilter.open();
+      await nameFilter.inputLabel.assertText(NAME_COLUMN);
       await nameFilter.input.assertPlaceholder(`${SEARCH_FOR}${NAME_COLUMN}`);
       await nameFilter.clearButton.assertText(CLEAR);
       await nameFilter.clearButton.assertStyle(K_BUTTON_SOLID_BASE);
@@ -49,6 +51,8 @@ test.describe('Members page', () => {
     await test.step(`Verify ${EXPECTED_RESULT_COUNT} results are displayed`, async () => {
       await assertCount(grid.rows, EXPECTED_RESULT_COUNT);
       await grid.pagerInfo.assertText(EXPECTED_PAGER_TEXT);
+      await grid.activeFiltersText.assertText(EXPECTED_ACTIVE_FILTERS_TEXT);
+      await grid.resetFiltersButton.assertVisible();
     });
   });
 });

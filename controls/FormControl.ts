@@ -23,6 +23,10 @@ export abstract class FormControl {
     await expect(this.locator).toHaveText(expected);
   }
 
+  async assertVisible(): Promise<void> {
+    await expect(this.locator).toBeVisible();
+  }
+
   async assertHidden(): Promise<void> {
     await expect(this.locator).toBeHidden();
   }
