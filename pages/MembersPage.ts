@@ -8,7 +8,7 @@ export class MembersPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.grid = new MembersGridComponent(page.getByTestId(MembersGridComponent.MEMBERS_GRID_TEST_ID));
+    this.grid = new MembersGridComponent(page.getByTestId(MembersGridComponent.MEMBERS_GRID_TEST_ID), page);
   }
 
   async isLoaded(): Promise<void> {

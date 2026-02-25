@@ -18,4 +18,12 @@ export abstract class FormControl {
   async assertDisabled(): Promise<void> {
     await expect(this.locator).toBeDisabled();
   }
+
+  async assertText(expected: string): Promise<void> {
+    await expect(this.locator).toHaveText(expected);
+  }
+
+  async assertHidden(): Promise<void> {
+    await expect(this.locator).toBeHidden();
+  }
 }

@@ -9,13 +9,11 @@ export class MembersGridComponent extends BaseGridComponent {
   static readonly MEMBERS_GRID_TEST_ID = 'members-data-grid-container';
 
   readonly rows: Locator;
+  readonly nameFilter: InputFilterMenuComponent;
 
-  constructor(root: Locator) {
+  constructor(root: Locator, page: Page) {
     super(root);
     this.rows = this.root.locator(TBODY).getByRole(ROW);
-  }
-
-  filter(page: Page, columnName: string): InputFilterMenuComponent {
-    return new InputFilterMenuComponent(this.root, page, columnName);
+    this.nameFilter = new InputFilterMenuComponent(root, page, NAME_COLUMN);
   }
 }

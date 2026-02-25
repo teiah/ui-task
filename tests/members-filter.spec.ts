@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 import { MembersPage } from '../pages';
 import { NAME_COLUMN } from '../components';
 import { CLEAR, FILTER, SEARCH_FOR, K_BUTTON_SOLID_PRIMARY, K_BUTTON_SOLID_BASE } from '../constants';
-import { assertCount, assertText, assertPlaceholder, assertButtonStyle, assertHidden } from './helpers';
+import { assertCount } from './helpers';
 
 test.describe('Members page', () => {
   test('TC-UI-01 - Filter members by name and verify result count', async ({ page }) => {
@@ -15,23 +15,24 @@ test.describe('Members page', () => {
       return MembersPage.open(page);
     });
 
+    const { grid } = membersPage;
+    const { nameFilter } = grid;
+
     await test.step(`Verify ${UNFILTERED_ROW_COUNT} members are displayed before filtering`, async () => {
-      await assertCount(membersPage.grid.rows, UNFILTERED_ROW_COUNT);
+      await assertCount(grid.rows, UNFILTERED_ROW_COUNT);
     });
 
     await test.step('Verify no status filters are selected', async () => {
-      await assertHidden(membersPage.grid.activeFiltersText.element);
+      await grid.activeFiltersText.assertHidden();
     });
-
-    const nameFilter = membersPage.grid.filter(page, NAME_COLUMN);
 
     await test.step('Open Name filter menu and verify elements', async () => {
       await nameFilter.open();
-      await assertPlaceholder(nameFilter.input.element, `${SEARCH_FOR}${NAME_COLUMN}`);
-      await assertText(nameFilter.clearButton.element, CLEAR);
-      await assertButtonStyle(nameFilter.clearButton.element, K_BUTTON_SOLID_BASE);
-      await assertText(nameFilter.applyButton.element, FILTER);
-      await assertButtonStyle(nameFilter.applyButton.element, K_BUTTON_SOLID_PRIMARY);
+      await nameFilter.input.assertPlaceholder(`${SEARCH_FOR}${NAME_COLUMN}`);
+      await nameFilter.clearButton.assertText(CLEAR);
+      await nameFilter.clearButton.assertStyle(K_BUTTON_SOLID_BASE);
+      await nameFilter.applyButton.assertText(FILTER);
+      await nameFilter.applyButton.assertStyle(K_BUTTON_SOLID_PRIMARY);
       await nameFilter.applyButton.assertDisabled();
     });
 
@@ -46,8 +47,8 @@ test.describe('Members page', () => {
     });
 
     await test.step(`Verify ${EXPECTED_RESULT_COUNT} results are displayed`, async () => {
-      await assertCount(membersPage.grid.rows, EXPECTED_RESULT_COUNT);
-      await assertText(membersPage.grid.pagerInfo.element, EXPECTED_PAGER_TEXT);
+      await assertCount(grid.rows, EXPECTED_RESULT_COUNT);
+      await grid.pagerInfo.assertText(EXPECTED_PAGER_TEXT);
     });
   });
 });
