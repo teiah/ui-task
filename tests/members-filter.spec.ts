@@ -23,7 +23,7 @@ test.describe('Members page', () => {
       await assertHidden(membersPage.grid.activeFiltersText.element);
     });
 
-    const nameFilter = membersPage.filter(NAME_COLUMN);
+    const nameFilter = membersPage.grid.filter(NAME_COLUMN);
 
     await test.step('Open Name filter menu and verify elements', async () => {
       await nameFilter.open();

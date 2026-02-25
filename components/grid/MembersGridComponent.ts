@@ -1,5 +1,6 @@
-import { Locator } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 import { BaseGridComponent } from './BaseGridComponent';
+import { InputFilterMenuComponent } from '../InputFilterMenuComponent';
 import { ROW, TBODY } from '../../constants';
 
 export const NAME_COLUMN = 'Name' as const;
@@ -9,8 +10,12 @@ export class MembersGridComponent extends BaseGridComponent {
 
   readonly rows: Locator;
 
-  constructor(root: Locator) {
+  constructor(root: Locator, private readonly page: Page) {
     super(root);
     this.rows = this.root.locator(TBODY).getByRole(ROW);
+  }
+
+  filter(columnName: string): InputFilterMenuComponent {
+    return new InputFilterMenuComponent(this.root, this.page, columnName);
   }
 }
