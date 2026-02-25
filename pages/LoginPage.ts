@@ -19,7 +19,6 @@ export class LoginPage extends BasePage {
   }
 
   async login(email: string, password: string): Promise<void> {
-    await this.goTo();
     await this.emailInput.fill(email);
     await this.continueButton.click();
     await this.page.waitForURL('**/signin**', { timeout: SIGN_IN_TIMEOUT });

@@ -3,7 +3,7 @@ import { LoginPage } from './pages';
 import { AUTH_FILE, LAUNCH_ARGS } from './playwright.config';
 
 async function globalSetup(config: FullConfig) {
-  const { baseURL } = config.projects[0].use;
+  const { baseURL } = config.use;
 
   if (!process.env.EMAIL) throw new Error('EMAIL environment variable is not set');
   if (!process.env.PASSWORD) throw new Error('PASSWORD environment variable is not set');
@@ -17,7 +17,7 @@ async function globalSetup(config: FullConfig) {
   });
   const page = await context.newPage();
 
-  const loginPage = new LoginPage(page);
+  const loginPage = await LoginPage.open(page);
   await loginPage.login(process.env.EMAIL, process.env.PASSWORD);
   await context.storageState({ path: AUTH_FILE });
 

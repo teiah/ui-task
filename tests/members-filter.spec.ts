@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { MembersPage } from '../pages';
 import { NAME_COLUMN } from '../components';
-import { CLEAR, FILTER, SEARCH_FOR, RESET_FILTERS, K_BUTTON_SOLID_PRIMARY, K_BUTTON_SOLID_BASE } from '../constants';
+import { CLEAR, FILTER, SEARCH_FOR, K_BUTTON_SOLID_PRIMARY, K_BUTTON_SOLID_BASE } from '../constants';
 
 test.describe('Members page', () => {
   test('TC-UI-01 - Filter members by name and verify result count', async ({ page }) => {
