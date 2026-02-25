@@ -9,10 +9,10 @@ export abstract class FilterMenuComponent extends BaseComponent {
   readonly clearButton: Button;
   readonly applyButton: Button;
 
-  constructor(grid: Locator, protected readonly page: Page, protected readonly column: string, popupRoot: Locator) {
+  constructor(grid: Locator, protected readonly page: Page, protected readonly column: string) {
     super(grid);
-    this.clearButton = new Button(popupRoot.getByRole(BUTTON, { name: CLEAR }));
-    this.applyButton = new Button(popupRoot.getByRole(BUTTON, { name: FILTER }));
+    this.clearButton = new Button(page.getByRole(BUTTON, { name: CLEAR }));
+    this.applyButton = new Button(page.getByRole(BUTTON, { name: FILTER }));
   }
 
   getColumnMenuLink(): Link {

@@ -3,13 +3,11 @@ import { Input } from '../controls';
 import { FilterMenuComponent } from './FilterMenuComponent';
 import { SEARCH_FOR } from '../constants';
 
-const AG_FILTER_POPUP = '.ag-filter';
-
 export class InputFilterMenuComponent extends FilterMenuComponent {
   readonly input: Input;
 
   constructor(grid: Locator, page: Page, column: string) {
-    super(grid, page, column, page.locator(AG_FILTER_POPUP));
+    super(grid, page, column);
     this.input = new Input(page.getByPlaceholder(`${SEARCH_FOR}${column}`));
   }
 

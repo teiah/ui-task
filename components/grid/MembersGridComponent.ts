@@ -10,12 +10,12 @@ export class MembersGridComponent extends BaseGridComponent {
 
   readonly rows: Locator;
 
-  constructor(root: Locator, private readonly page: Page) {
+  constructor(root: Locator) {
     super(root);
     this.rows = this.root.locator(TBODY).getByRole(ROW);
   }
 
-  filter(columnName: string): InputFilterMenuComponent {
-    return new InputFilterMenuComponent(this.root, this.page, columnName);
+  filter(page: Page, columnName: string): InputFilterMenuComponent {
+    return new InputFilterMenuComponent(this.root, page, columnName);
   }
 }
