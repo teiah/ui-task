@@ -2,7 +2,7 @@
 
 ## Project Purpose
 
-Implement a minimal Playwright + TypeScript test framework that executes exactly one UI test case against the OfficeRnD staging UI. Build only the components, classes, and methods required to run that test — nothing more.
+Implement a Playwright + TypeScript test framework that executes TC-UI-01 against the OfficeRnD staging UI. The framework should demonstrate good abstraction, clean structure, and sound inheritance — designed to grow and support additional tests in the future, not just to run a single test case.
 
 ---
 
@@ -36,7 +36,7 @@ Implement a minimal Playwright + TypeScript test framework that executes exactly
 
 - Use **Playwright** with **TypeScript**
 - Use the **Page Object Model** pattern — one page object per distinct page or component
-- Create **only** the page objects, locators, and helper methods needed to execute TC-UI-01; do not build reusable utilities or abstractions for hypothetical future tests
+- Structure the framework for growth: use base classes, shared abstractions, and reusable controls where they reflect genuine patterns — not as premature over-engineering, but to show sound design that a real team could extend
 - Credentials must be stored in a `.env` file and read via `process.env`; never hard-coded in test or page object files
 - The `.env` file must be listed in `.gitignore`
 
