@@ -1,7 +1,8 @@
-import { Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 
 export abstract class BasePage {
   protected abstract readonly url: string;
+  protected readonly root?: Locator;
 
   constructor(protected readonly page: Page) {}
 
