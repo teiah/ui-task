@@ -3,8 +3,6 @@ import { BaseComponent } from '../BaseComponent';
 import { Button, Text } from '../../controls';
 import { BUTTON, RESET_FILTERS } from '../../constants';
 
-const PAGER_INFO_TEST_ID = 'pager-info';
-const ACTIVE_FILTERS_TEXT_TEST_ID = 'active-filters-text';
 
 export abstract class BaseGridComponent extends BaseComponent {
   abstract readonly rows: Locator;
@@ -14,8 +12,8 @@ export abstract class BaseGridComponent extends BaseComponent {
 
   constructor(root: Locator) {
     super(root);
-    this.pagerInfo = new Text(this.root.getByTestId(PAGER_INFO_TEST_ID));
-    this.activeFiltersText = new Text(this.root.getByTestId(ACTIVE_FILTERS_TEXT_TEST_ID));
+    this.pagerInfo = new Text(this.root.locator('[data-test="pager-info"]'));
+    this.activeFiltersText = new Text(this.root.locator('[data-test="active-filters-text"]'));
     this.resetFiltersButton = new Button(this.root.getByRole(BUTTON, { name: RESET_FILTERS }));
   }
 

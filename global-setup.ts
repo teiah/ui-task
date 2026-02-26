@@ -1,9 +1,9 @@
 import { chromium, devices, FullConfig } from '@playwright/test';
 import { LoginPage } from './pages';
-import { AUTH_FILE, LAUNCH_ARGS } from './playwright.config';
+import { AUTH_FILE, BASE_URL, LAUNCH_ARGS } from './playwright.config';
 
-async function globalSetup(config: FullConfig) {
-  const { baseURL } = config.use;
+async function globalSetup(_config: FullConfig) {
+  const baseURL = BASE_URL;
 
   if (!process.env.EMAIL) throw new Error('EMAIL environment variable is not set');
   if (!process.env.PASSWORD) throw new Error('PASSWORD environment variable is not set');

@@ -7,6 +7,7 @@ export const NAME_COLUMN = 'Name' as const;
 
 export class MembersGridComponent extends BaseGridComponent {
   static readonly MEMBERS_GRID_TEST_ID = 'members-data-grid-container';
+  private static readonly NAME_FILTER_TEST_ID = `members-filter-name-${NAME_COLUMN}`;
 
   readonly rows: Locator;
   readonly nameFilter: InputFilterMenuComponent;
@@ -14,6 +15,6 @@ export class MembersGridComponent extends BaseGridComponent {
   constructor(root: Locator, page: Page) {
     super(root);
     this.rows = this.find(TBODY).getByRole(ROW);
-    this.nameFilter = new InputFilterMenuComponent(root, page, NAME_COLUMN);
+    this.nameFilter = new InputFilterMenuComponent(root, page, NAME_COLUMN, MembersGridComponent.NAME_FILTER_TEST_ID);
   }
 }

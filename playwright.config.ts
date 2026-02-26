@@ -3,6 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export const AUTH_FILE = 'auth.json';
 export const LAUNCH_ARGS = ['--disable-blink-features=AutomationControlled'];
+export const BASE_URL = 'https://staging.officernd.com';
 
 export default defineConfig({
   globalSetup: './global-setup.ts',
@@ -10,7 +11,7 @@ export default defineConfig({
   reporter: 'html',
   expect: { timeout: 15000 },
   use: {
-    baseURL: 'https://staging.officernd.com',
+    baseURL: BASE_URL,
     headless: true,
     storageState: AUTH_FILE,
     testIdAttribute: 'rnd-data-id',
