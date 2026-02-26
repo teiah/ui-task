@@ -11,22 +11,22 @@ test.describe('Members page', () => {
     const EXPECTED_PAGER_TEXT = `1 - ${EXPECTED_RESULT_COUNT} out of ${EXPECTED_RESULT_COUNT}`;
     const EXPECTED_ACTIVE_FILTERS_TEXT = `Active Filters: ${NAME_COLUMN} (${FILTER_VALUE})`;
 
-    const membersPage = await test.step('Navigate to Members page', async () => {
+    const membersPage = await test.step('navigate to Members page', async () => {
       return MembersPage.open(page);
     });
 
     const { grid } = membersPage;
     const { nameFilter } = grid;
 
-    await test.step(`Verify ${UNFILTERED_ROW_COUNT} members are displayed before filtering`, async () => {
+    await test.step(`verify ${UNFILTERED_ROW_COUNT} members are displayed before filtering`, async () => {
       await grid.assertRowCount(UNFILTERED_ROW_COUNT);
     });
 
-    await test.step('Verify no status filters are selected', async () => {
+    await test.step('verify no status filters are selected', async () => {
       await grid.activeFiltersText.assertHidden();
     });
 
-    await test.step('Open Name filter menu and verify elements', async () => {
+    await test.step('open Name filter menu and verify elements', async () => {
       await nameFilter.open();
       await nameFilter.inputLabel.assertText(NAME_COLUMN);
       await nameFilter.input.assertPlaceholder(`${SEARCH_FOR}${NAME_COLUMN}`);
@@ -37,17 +37,16 @@ test.describe('Members page', () => {
       await nameFilter.applyButton.assertDisabled();
     });
 
-    await test.step(`Enter "${FILTER_VALUE}" in Name filter and verify Filter button is enabled`, async () => {
+    await test.step(`enter "${FILTER_VALUE}" in Name filter and verify Filter button is enabled`, async () => {
       await nameFilter.fill(FILTER_VALUE);
       await nameFilter.applyButton.assertEnabled();
     });
 
-    await test.step('Apply Name filter', async () => {
-      await nameFilter.apply();
-      await nameFilter.assertClosed();
+    await test.step('apply Name filter', async () => {
+      await nameFilter.clickFilterButton();
     });
 
-    await test.step(`Verify ${EXPECTED_RESULT_COUNT} results are displayed`, async () => {
+    await test.step(`verify filter is applied and ${EXPECTED_RESULT_COUNT} results are displayed`, async () => {
       await grid.assertRowCount(EXPECTED_RESULT_COUNT);
       await grid.pagerInfo.assertText(EXPECTED_PAGER_TEXT);
       await grid.activeFiltersText.assertText(EXPECTED_ACTIVE_FILTERS_TEXT);

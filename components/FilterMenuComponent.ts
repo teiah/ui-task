@@ -40,8 +40,9 @@ export abstract class FilterMenuComponent extends BaseComponent {
     await this.assertOpen();
   }
 
-  async apply(): Promise<void> {
+  async clickFilterButton(): Promise<void> {
     await this.applyButton.click();
+    await this.assertClosed();
   }
 
 }
