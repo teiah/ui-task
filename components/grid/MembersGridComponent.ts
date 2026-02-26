@@ -15,7 +15,7 @@ export class MembersGridComponent extends BaseGridComponent {
 
   constructor(root: Locator, page: Page) {
     super(root);
-    this.rows = this.root.locator(TBODY).getByRole(ROW);
+    this.rows = this.find(TBODY).getByRole(ROW);
     this.nameFilter = new InputFilterMenuComponent(root, page, NAME_COLUMN);
     this.resetFiltersButton = new Button(this.root.getByRole(BUTTON, { name: RESET_FILTERS }));
   }
