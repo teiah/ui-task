@@ -5,16 +5,17 @@ import { ROW, TBODY } from '../../constants';
 
 export const NAME_COLUMN = 'Name' as const;
 
+const MEMBERS_GRID_TEST_ID = 'members-data-grid-container';
+const NAME_FILTER_TEST_ID = `members-filter-name-${NAME_COLUMN}`;
+
 export class MembersGridComponent extends BaseGridComponent {
-  static readonly MEMBERS_GRID_TEST_ID = 'members-data-grid-container';
-  private static readonly NAME_FILTER_TEST_ID = `members-filter-name-${NAME_COLUMN}`;
 
   readonly rows: Locator;
   readonly nameFilter: InputFilterMenuComponent;
 
-  constructor(root: Locator, page: Page) {
-    super(root);
+  constructor(scope: Locator, page: Page) {
+    super(scope.getByTestId(MEMBERS_GRID_TEST_ID));
     this.rows = this.find(TBODY).getByRole(ROW);
-    this.nameFilter = new InputFilterMenuComponent(root, page, NAME_COLUMN, MembersGridComponent.NAME_FILTER_TEST_ID);
+    this.nameFilter = new InputFilterMenuComponent(this.root, page, NAME_COLUMN, NAME_FILTER_TEST_ID);
   }
 }
