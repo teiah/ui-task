@@ -2,9 +2,11 @@ import { Page, expect } from '@playwright/test';
 import { BasePage } from './BasePage';
 import { MembersGridComponent } from '../components';
 
+const MEMBERS_PAGE_TEST_ID = 'members-page';
+
 export class MembersPage extends BasePage {
   protected readonly url = `/admin/${process.env.ORG_SLUG}/operations/members`;
-  protected readonly root = this.page.getByTestId('members-page');
+  protected readonly root = this.page.getByTestId(MEMBERS_PAGE_TEST_ID);
 
   readonly grid: MembersGridComponent;
 
