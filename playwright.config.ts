@@ -13,7 +13,7 @@ export default defineConfig({
     baseURL: 'https://staging.officernd.com',
     headless: true,
     storageState: AUTH_FILE,
-    testIdAttribute: 'data-test',
+    testIdAttribute: 'rnd-data-id',
   },
   projects: [
     {

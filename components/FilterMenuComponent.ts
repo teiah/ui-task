@@ -15,8 +15,12 @@ export abstract class FilterMenuComponent extends BaseComponent {
     this.applyButton = new Button(page.getByRole(BUTTON, { name: FILTER }));
   }
 
+  private get headerCell(): Locator {
+    return this.root.getByTestId('header-cell-wrapper').filter({ hasText: this.column });
+  }
+
   getColumnMenuLink(): Link {
-    return new Link(this.root.getByRole(LINK, { name: `${this.column} ${COLUMN_MENU_ROLE}` }));
+    return new Link(this.headerCell.getByRole(LINK, { name: `${this.column} ${COLUMN_MENU_ROLE}` }));
   }
 
   protected abstract isOpenLocator(): Locator;
