@@ -8,6 +8,7 @@ export const BASE_URL = 'https://staging.officernd.com';
 export default defineConfig({
   globalSetup: './global-setup.ts',
   testDir: './tests',
+  retries: 1,
   reporter: 'html',
   expect: { timeout: 15000 },
   use: {
