@@ -6,12 +6,9 @@ Create an automated UI test using any technology or framework of your choice.
 
 ### Test Scenario
 
-1. Navigate to: https://staging.officernd.com/login
-2. Log in with the following credentials:
-   - Email: `your@email.com`
-   - Password: `yourpassword`
-3. After logging in, open the Members page:
-   https://staging.officernd.com/admin/your-org-slug/operations/members
+1. Navigate to the login page
+2. Log in with the credentials
+3. Navigate to the Members page
 4. Apply a filter by Name: `zara`
 5. Validate that exactly **2 results** are displayed in the grid
 

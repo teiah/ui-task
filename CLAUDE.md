@@ -22,9 +22,9 @@ Implement a Playwright + TypeScript test framework that executes TC-UI-01 agains
 
 | Step | Action |
 |---|---|
-| 1 | Navigate to `https://staging.officernd.com/login` |
-| 2 | Log in with the credentials above |
-| 3 | In the left-hand menu select **Operations**, then **Members** from the submenu |
+| 1 | Navigate to the login page |
+| 2 | Log in with the credentials |
+| 3 | Navigate to the Members page |
 | 4 | Apply a filter by **Name** with the value `zara` |
 | 5 | Assert that exactly **2 results** are displayed in the members grid |
 
