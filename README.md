@@ -46,11 +46,13 @@ npx playwright install
 
 ### Configure credentials
 
-Create a `.env` file in the project root:
+Create a `.env` file in the project root (use `.env.example` as a reference):
 
 ```
 EMAIL=your@email.com
 PASSWORD=yourpassword
+ORG_SLUG=your-org-slug
+BASE_URL=https://staging.officernd.com
 ```
 
 ---

@@ -3,7 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export const AUTH_FILE = 'auth.json';
 export const LAUNCH_ARGS = ['--disable-blink-features=AutomationControlled'];
-export const BASE_URL = 'https://staging.officernd.com';
+export const BASE_URL = process.env.BASE_URL!;
 
 export default defineConfig({
   globalSetup: './global-setup.ts',
