@@ -4,6 +4,7 @@ import { FormControl } from './FormControl';
 export class Input extends FormControl {
   async fill(value: string): Promise<void> {
     await this.locator.fill(value);
+    await expect(this.locator).toHaveValue(value);
   }
 
   async assertPlaceholder(expected: string): Promise<void> {

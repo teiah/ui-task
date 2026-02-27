@@ -1,6 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 import { BaseGridComponent } from './BaseGridComponent';
-import { InputFilterMenuComponent } from '../InputFilterMenuComponent';
+import { InputFilterMenuComponent } from '..';
 import { ROW, TBODY } from '../../constants';
 
 export const NAME_COLUMN = 'Name' as const;
