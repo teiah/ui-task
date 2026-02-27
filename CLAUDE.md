@@ -6,15 +6,6 @@ Implement a Playwright + TypeScript test framework that executes TC-UI-01 agains
 
 ---
 
-## Test Environment
-
-| Item | Value |
-|---|---|
-| URL | `https://staging.officernd.com/login` |
-| Email | `your@email.com` |
-| Password | `yourpassword` |
-
----
 
 ## Test Case
 
