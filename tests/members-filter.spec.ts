@@ -22,13 +22,15 @@ test('TC-UI-01 - Filter members by name and verify result count', async ({ membe
 
   await test.step('open Name filter menu and verify elements', async () => {
     await nameFilter.open();
-    await nameFilter.inputLabel.assertText(NAME_COLUMN);
-    await nameFilter.input.assertPlaceholder(`${SEARCH_FOR}${NAME_COLUMN}`);
-    await nameFilter.clearButton.assertText(CLEAR);
-    await nameFilter.clearButton.assertStyle(K_BUTTON_SOLID_BASE);
-    await nameFilter.applyButton.assertText(FILTER);
-    await nameFilter.applyButton.assertStyle(K_BUTTON_SOLID_PRIMARY);
-    await nameFilter.applyButton.assertDisabled();
+    await Promise.all([
+      nameFilter.inputLabel.assertText(NAME_COLUMN),
+      nameFilter.input.assertPlaceholder(`${SEARCH_FOR}${NAME_COLUMN}`),
+      nameFilter.clearButton.assertText(CLEAR),
+      nameFilter.clearButton.assertStyle(K_BUTTON_SOLID_BASE),
+      nameFilter.applyButton.assertText(FILTER),
+      nameFilter.applyButton.assertStyle(K_BUTTON_SOLID_PRIMARY),
+      nameFilter.applyButton.assertDisabled(),
+    ]);
   });
 
   await test.step(`enter "${FILTER_VALUE}" in Name filter and verify Filter button is enabled`, async () => {
@@ -42,6 +44,7 @@ test('TC-UI-01 - Filter members by name and verify result count', async ({ membe
 
   await test.step(`verify filter is applied and ${EXPECTED_RESULT_COUNT} results are displayed`, async () => {
     await grid.assertRowCount(EXPECTED_RESULT_COUNT);
+    await grid.assertColumnContains(NAME_COLUMN, FILTER_VALUE);
     await grid.pagerInfo.assertText(EXPECTED_PAGER_TEXT);
     await grid.activeFiltersText.assertText(EXPECTED_ACTIVE_FILTERS_TEXT);
     await grid.resetFiltersButton.assertVisible();
