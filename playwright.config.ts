@@ -15,7 +15,7 @@ export default defineConfig({
     baseURL: BASE_URL,
     headless: true,
     storageState: AUTH_FILE,
-    testIdAttribute: 'rnd-data-id',
+    testIdAttribute: 'data-test',
   },
   projects: [
     {

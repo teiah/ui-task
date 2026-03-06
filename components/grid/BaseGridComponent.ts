@@ -12,8 +12,8 @@ export abstract class BaseGridComponent extends BaseComponent {
 
   constructor(root: Locator) {
     super(root);
-    this.pagerInfo = new Text(this.root.locator('[data-test="pager-info"]'));
-    this.activeFiltersText = new Text(this.root.locator('[data-test="active-filters-text"]'));
+    this.pagerInfo = new Text(this.root.getByTestId('pager-info'));
+    this.activeFiltersText = new Text(this.root.getByTestId('active-filters-text'));
     this.resetFiltersButton = new Button(this.root.getByRole(BUTTON, { name: RESET_FILTERS }));
   }
 

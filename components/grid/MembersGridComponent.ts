@@ -6,7 +6,7 @@ import { ROW, TBODY } from '../../constants';
 export const NAME_COLUMN = 'Name' as const;
 
 const MEMBERS_GRID_TEST_ID = 'members-data-grid-container';
-const NAME_FILTER_TEST_ID = `members-filter-name-${NAME_COLUMN}`;
+const NAME_FILTER_TEST_ID = 'table-filter-search-text';
 const MEMBER_NAME_LINK_TEST_ID = 'navigate-to-member-details';
 
 export class MembersGridComponent extends BaseGridComponent {
@@ -18,7 +18,7 @@ export class MembersGridComponent extends BaseGridComponent {
   constructor(scope: Locator, page: Page) {
     super(scope.getByTestId(MEMBERS_GRID_TEST_ID));
     this.rows = this.find(TBODY).getByRole(ROW);
-    this.nameCells = this.rows.locator(`[rnd-data-id="${MEMBER_NAME_LINK_TEST_ID}"]`);
+    this.nameCells = this.rows.getByTestId(MEMBER_NAME_LINK_TEST_ID);
     this.nameFilter = new InputFilterMenuComponent(this.root, page, NAME_COLUMN, NAME_FILTER_TEST_ID);
   }
 

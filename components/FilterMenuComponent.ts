@@ -4,7 +4,7 @@ import { Button, Link } from '../controls';
 import { BUTTON, LINK, CLEAR, FILTER } from '../constants';
 
 const COLUMN_MENU_ROLE = 'Column menu';
-const HEADER_CELL_WRAPPER_TEST_ID = 'header-cell-wrapper';
+const STACK_TEST_ID = 'stack';
 
 export abstract class FilterMenuComponent extends BaseComponent {
   readonly clearButton: Button;
@@ -17,7 +17,7 @@ export abstract class FilterMenuComponent extends BaseComponent {
   }
 
   private get headerCell(): Locator {
-    return this.root.getByTestId(HEADER_CELL_WRAPPER_TEST_ID).filter({ hasText: this.column });
+    return this.root.getByTestId(STACK_TEST_ID).filter({ hasText: this.column });
   }
 
   getColumnMenuLink(): Link {
