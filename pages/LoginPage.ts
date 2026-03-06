@@ -15,7 +15,7 @@ export class LoginPage extends BasePage {
 
   async isLoaded(): Promise<void> {
     await this.emailInput.waitForVisible();
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForResponse(res => res.url().includes('recaptcha') && res.url().includes('anchor'));
   }
 
   async login(email: string, password: string): Promise<void> {
